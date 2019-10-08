@@ -1,0 +1,348 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Kalam:400,700&display=swap');
+
+/* 초기화 */
+* {margin:0; padding:0;}
+html {overflow-y:scroll;height:100%;min-width:320px}
+body {margin:0;padding:0;font-size:1em;height:100%;font-family: AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;}
+html, h1, h2, h3, h4, h5, h6, form, fieldset, img {margin:0;padding:0;border:0}
+h1, h2, h3, h4, h5, h6 {font-size:1em}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block}
+legend {position:absolute;font-size:0;line-height:0;text-indent:-9999em;overflow:hidden}
+input, button {margin:0;padding:0;font-size:1em}
+button {cursor:pointer}
+input[type=text], input[type=password], input[type=submit], input[type=image], button {font-size:1em;-webkit-appearance:none}
+textarea, select,button {font-size:1em;font-family: AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;}
+textarea {border-radius:0;-webkit-appearance:none}
+select {margin:0;background:none}
+p {margin:0;padding:0;word-break:break-all; color:#333;}
+hr {display:none}
+pre {overflow-x:scroll;font-size:1.1em}
+a {color:#333;text-decoration:none}
+a:hover{color:#333}
+ul,li,dl,dt,dd{padding:0;margin:0}
+ul{list-style:none;}
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* 전체 영역 */
+#header {width:100%; height: 100vh; background: url(../img/logo/header_bg.jpg) no-repeat; background-size: cover; background-attachment: fixed;}
+#header.on {position: fixed; top:0; left:0; padding-bottom:0; border-bottom:0; width: 100%; height: 40px; box-shadow: 2px 3px 12px rgba(0,0,0,0.3); z-index: 99; background: #fff;}
+#main {width:100%; overflow: hidden; background: #fff;}
+#footer {width:100%;}
+.clear {clear:both;}
+.wrap {max-width:1200px; width: 100%; margin:0 auto;}
+h1 {font-size: 0; width:0; height:0;}
+h2 {font-size:2.5em; text-align: center; padding:50px; font-family: 'Kalam', cursive;}
+h3 {font-size: 0; width:0; height:0;}
+
+/* 상단 영역 */
+.logo {width:100%; height:calc(100vh - 40px); position: relative;}
+.logo.off {display: none;}
+.logo h1 {position: absolute; left:40%; top: 20%; transform: translateY(-50%);}
+.logo h1 .logo_background {display: block; position: relative; left:50%; font-size: 0; width:250px; height:250px; border-radius: 50%; z-index: -1; margin:20px 0 0 0; box-shadow: 2px 2px 20px rgba(255,255,255,0.8); transition: all .6s;}
+.logo h1:hover .logo_background {box-shadow: 2px 2px 30px rgba(255,255,255,1);}
+.logo h1 .logo_background:before {content:''; position: absolute; left:0; top:0; right:0; bottom:0; padding-top:100%; border-radius: 50%; background:url(../img/logo/logo_bg.png); animation: movebg 50s linear infinite;}
+
+@keyframes movebg {
+    0% {background-position: 0px;}
+    50% {background-position: -1417px;}
+    100% {background-position: 0px;}
+}
+
+.logo h1 .logo_logo {z-index: 99; position: absolute; left:-20px; top:195px; transform-origin: 50% 0; animation: wind 25s ease-in-out infinite;}
+.logo h1 .logo_front {font-size: 0; width:480px; height:280px; position: absolute; left:-115px; top:12px; background: url(../img/logo/logo_front.png);}
+.logo h1 .logo_front a {display: block; width: 100%; height: 100%;}
+.logo h1 .logo_front_mv {font-size: 0; position: absolute; left:170px; top:105px; background:url(../img/logo/logo_front_mv.png); width:40px; height: 40px; transform-origin: 50% 0; animation: wind 15s ease-in-out infinite;}
+
+@keyframes wind {
+    0% {transform: rotate(0deg);}
+    10% {transform: rotate(-10deg);}
+    30% {transform: rotate(20deg);}
+    50% {transform: rotate(-20deg);}
+    70% {transform: rotate(10deg);}
+    100% {transform: rotate(0deg);}
+}
+
+/* 메뉴 영역 */
+.menu {background: #813358;}
+.nav {text-align: center;}
+.nav ul {display: inline-flex; width: 100%;}
+.nav ul li {position: relative; width:25%; height: 40px; line-height: 40px;}
+.nav ul li:before {content: ''; display: block; width:1px; height:20px; background:#fff; position: absolute; top:10px; left:-0.5px;}
+.nav ul li:first-child:before {display: none;}
+.nav ul li:after { content: ''; display: block; width:10px; height:10px; border-top: 0px solid #813358; border-left: 10px solid transparent; border-right: 10px solid transparent; position: absolute; left:50%; bottom:-10px; transform: translate(-50%, 0); transition: all .3s;}
+.nav ul li:hover:after {border-top: 10px solid #fff; z-index: 1;}
+.nav ul li a {display: block; width: 100%; height: 100%; color:#fff; font-weight: bold; transition: all 0.3s;}
+.nav ul li:hover a {background:#fff; color: #813358;}
+.nav ul li.active a {background: #fff; color: #813358;}
+.nav ul li.active:after {border-top: 10px solid #fff; z-index: 1;}
+
+.mnav {display: none; font-size: 0;}
+
+/* 메인 영역 */
+/* about */
+.ab {background:linear-gradient(180deg, #fbdbe9, #f1dcef, #e8ddf6); padding: 0 0 100px 0; height: 80vh; position: relative;}
+.ab h4 {font-size: 0;}
+.ab .ab_book {position: absolute; left:52%; top:300px; width:500px; height: 353px; background:url(../img/ab_book.png) no-repeat; z-index: -1; font-size: 0; transform: rotate(-20deg);}
+.ab .ab_bottle {position: absolute; left:0; top:0; width:250px; height: 264px; background:url(../img/ab_bottle.png) no-repeat; z-index: -1; font-size: 0;}
+.ab .ab_clock {position: absolute; left:0; top:400px; width:400px; height: 500px; background:url(../img/ab_clock.png) no-repeat; z-index: 0; font-size: 0;}
+.ab .ab_flower {position: absolute; left:39%; top:0; width:300px; height: 378px; background:url(../img/ab_flower.png) no-repeat; font-size: 0;}
+.ab .ab_cup {position: absolute; left:80%; top:20%; width:222px; height: 278px; background:url(../img/ab_cup.png) no-repeat; transform-origin: 0 50%; transform: rotate(-75deg); z-index: -1; font-size: 0;}
+.ab .ab_pen {position: absolute; left:93%; top:15%; width:44px; height: 400px; background:url(../img/ab_pen.png) no-repeat; transform: rotate(-11deg); z-index: -1; font-size: 0;}
+.ab .loading_bg {position: absolute; left:50%; bottom:0; width:1px; height:100px; background:#fff; opacity: 0.3; font-size: 0; }
+.ab .loading_bar {position: absolute; left:49.95%; bottom:100px; width:3px; height:20px; background:#fff; color:#c9545c; font-weight: bold; text-indent: -70px; opacity: 1; animation: loading 3s ease infinite; user-select: none; cursor: pointer;}
+@keyframes loading {
+    0% {bottom:80px; opacity: 1;}
+    50% {bottom:0px; opacity: 0.5;}
+    100% {bottom:80px; opacity: 1;}
+}
+
+#about .h2_ab {color:#c9545c;}
+#about .ab_box {margin-top: 24px; background:rgba(255,255,255,0.8); padding: 40px; box-sizing: border-box; border-radius: 15px; animation: fadeInUp 1s;}
+#about .ab_box p {line-height: 1.5em;}
+#about .ab_box .history {position: relative; margin-top: 40px;}
+#about .ab_box .history em {font-size:1.2em; font-weight: bold;}
+#about .ab_box .history p {padding: 10px 0 20px 0; line-height: 2em;}
+
+/* portfolio */
+.port {padding: 0 0 100px 0;}
+#portfolio .h2_port {color:coral;}
+#portfolio ul {display: flex;}
+#portfolio ul li {position: relative; width:21.8%; height:500px; background:#ddd; transition: all .3s; overflow: hidden;}
+#portfolio ul li:first-child, #portfolio ul li:first-child.on {background: url(../img/list/p/1-1.png); background-size: cover;}
+#portfolio ul li:hover {width:29.5%; background: rgba(0,0,0,0.6);}
+#portfolio ul li a:before {content: ''; display: block; position: absolute; width: 100%; height: 100%; background:rgba(0,0,0,0.6);}
+#portfolio ul li.on {width:29.5%;}
+#portfolio ul li.on a:before {content: ''; display: block; position: absolute; left:0; top:0; width: 100%; height: 100%; background:rgba(0,0,0,0.3); z-index: 1;}
+#portfolio ul li.on:after {content: ''; display: block; position: absolute; left:50%; top:50%; transform: translate(-50%, -50%) rotate(0deg); width:60px; height:60px; background:url(../img/pluse.png); opacity: 0.8; z-index: 1; animation: deg .6s;}
+@keyframes deg {
+    from {transform: translate(-50%, -50%) rotate(0deg);}
+    to {transform: translate(-50%, -50%) rotate(-180deg);}
+}
+#portfolio ul li.on:first-child:after {display: none;}
+#portfolio ul li a {display: block; width: 100%; height:100%;}
+#portfolio ul li .port_cover {position: absolute; left:0; top:0; width: 100%; height: 100%; z-index: 2; transition:  all .3s;}
+#portfolio ul li .port_cover.starbucks {background: rgba(0,0,0,0.8);}
+#portfolio ul li .port_cover.samsung {background: rgba(0,0,0,0.8);}
+#portfolio ul li .port_cover.mois {background: rgba(0,0,0,0.8);}
+#portfolio ul li .port_cover.port {background: rgba(0,0,0,0.8);}
+#portfolio ul li:hover .port_cover, #portfolio ul li.on .port_cover {opacity: 0;}
+#portfolio ul li .port_left {position: absolute; left: 45%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); transform-origin: 50% 0; text-align: center; color: #fff; font-size: 1.5em; white-space: nowrap; letter-spacing: -1px; font-weight: bold; z-index: 3; transition: all .3s;}
+#portfolio ul li.on .port_left {top:30%; left: 50%; transform: translate(-50%, -50%) rotate(0deg); white-space:normal; z-index: 1;}
+#portfolio ul li.on:first-child .port_left {top:50%; left:50%; transform: translate(-50%, -50%) rotate(0deg); white-space:normal; font-size:2em; color:#ffad17;}
+#portfolio ul li .port_main img {transform-origin: center center; height: 100%; transform: translateX(-25%);}
+#portfolio ul li.on .port_main img {transform-origin: center center; height: 100%; transform: translateX(-25%);}
+#portfolio ul li:first-child .port_main img {height: 100%; transform: translateX(0);}
+#portfolio ul li.on:first-child .port_main img {height: 100%; transform: translateX(0);}
+
+#portfolio .port_list {width: 100%; height: 600px; overflow: hidden; border: 1px solid #813358; margin: 20px 0; transition: all .6s;}
+#portfolio .port_list:hover {box-shadow: 8px 8px 16px rgba(0,0,0,0.4);}
+#portfolio .port_list div .port_explanation {width: 50%; display: inline-block; height: 600px; padding: 40px; box-sizing: border-box; vertical-align: top;}
+#portfolio .port_list div .port_explanation h3 {position: relative; display: inline; width: auto; height: auto; font-size: 2em; font-weight: 100; letter-spacing: -1px; color: #813358; z-index: 1;}
+#portfolio .port_list div .port_explanation h3:before {content: ''; display: block; position: absolute; left:0; bottom:0; width:100%; height: 8px; background: #7b9cbb; z-index: -1; transition: all .6s;}
+#portfolio .port_list div .port_explanation h3:hover:before {background: #b4d0ea;}
+#portfolio .port_list div .port_explanation p {line-height: 1.5em; font-size: 0.9em; margin-top: 40px;}
+#portfolio .port_list div .port_explanation p i {font-weight: bold; color:#813358;}
+#portfolio .port_list div .port_explanation a {font-size: 1.2em; display: block; padding: 20px; text-align: center; background:#813358; color:#fff; margin:60px 0; transition: all .6s;}
+#portfolio .port_list div .port_explanation a:hover {background:#fff; color:#813358; border:1px solid #813358; box-sizing: border-box;}
+#portfolio .port_list div .port_img {width: 50%; display: inline-block; height: 600px; margin-left: -6px; position: relative; overflow-Y: scroll; border-left:2px solid #813358; background:#813358; }
+#portfolio .port_list div .port_img img {width: 100%; position: absolute; left:0; top:0;}
+
+/* worklist */
+.work {background: #333; padding: 0 0 50px 0;}
+#worklist {padding:20px 0;}
+#worklist .h2_work {color:#70bac7;}
+#worklist ul {background:#fff; width:100%; margin:0; padding:0; border: 10px solid #fff}
+#worklist ul li {display: inline-flex; position: relative; width: 25%; height: 300px; margin: -2px -6px 0 0; overflow: hidden; cursor: pointer;}
+#worklist ul li:before {content: ''; display: block; position: absolute; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5); transition: all .3s; z-index: 1;}
+#worklist ul li:hover:before {background:rgba(0,0,0,0.8);}
+#worklist ul li img {position: absolute; width: 100%; height: 100%; transition: all .3s;}
+#worklist ul li:hover img {transform: scale(1.5, 1.5);}
+#worklist ul li em, #worklist ul li em:before, #worklist ul li p {opacity: 0; transition: all .3s;}
+#worklist ul li em {position: absolute; left:40px; top:40px; color:#fff; font-size: 1.7em; font-weight: bold;}
+#worklist ul li em:before {content: ''; display: block; position: absolute; left: 0; top: 35px; background: #70bac7; width: 50px; height: 3px;}
+#worklist ul li p {position: absolute; left:40px; top:100px; color:#fff; font-size: 1.25em; font-weight: bold; letter-spacing: -1px;}
+#worklist ul li:hover em, #worklist ul li:hover em:before, #worklist ul li:hover p {opacity: 1; z-index: 2;}
+#worklist ul li a {display: block; width:100%; height: 100%;}
+#worklist ul li a p {position: absolute; left:40px; top:140px; font-size:1em; font-weight: normal; padding:5px; color:#000; background:#fff; letter-spacing: -2px;}
+
+.open {display: none;}
+.open .img {position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 50;}
+.open .img img {max-height: 1300px;}
+.open .close {position: fixed; right: 50px; top: 50px; display: block; width: 40px; height: 40px; font-size: 0; background: #fff; border-radius: 3px; cursor:pointer; z-index: 50;}
+.open .close:before {content: ''; display: block; width: 80%; height: 2px; background: #ff7373; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); border-radius: 50%;}
+.open .close:after {content: ''; display: block; width: 80%; height: 2px; background: #f1086d; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); border-radius: 50%;}
+.open .dim {position: fixed; left:0; top:0; right: 0; bottom: 0; font-size: 0; background:rgba(0,0,0,0.8); z-index: 3}
+
+/* contact */
+.cont {background:url(../img/cont_bg.png); background-size: cover; background-attachment: fixed; position: relative; padding: 0 0 50px 0; z-index: 1; overflow: hidden;}
+.cont:before {content: ''; display: block; position: absolute; width:100%; height:100%; background: inherit; z-index: -1; -webkit-filter: blur(6px); -moz-filter: blur(6px); -o-filter: blur(6px); -ms-filter: blur(6px); filter: blur(5px);}
+.cont:after {content: ''; display: block; position: absolute; left:0; top:0; width: 100%; height:100%; background:rgba(0,0,0,0.6); z-index: -1;}
+#contact .h2_cont {color:#9377bd;}
+#contact #contact_top ul {display: flex; width:100%; text-align: center;}
+#contact #contact_top ul li {display: inline-flex; width:36%; text-align: center;}
+#contact #contact_top ul li .box {position: relative; width: 600px; height: 200px;}
+#contact #contact_top ul li .box .cont_left {display: block; position: absolute; left:66px; top:0; border-bottom:122px solid #e6ecf0; border-left:112px solid transparent; border-right:122px solid transparent; transform: rotate(27deg);}
+#contact #contact_top ul li .box .cont_right {position: absolute; left: 200px; top: 30%; transform: translateY(-50%); text-align: left;}
+#contact #contact_top ul li .box .cont_right em {color: #9377bd; font-size: 1.5em; font-weight: bold; letter-spacing: -1px; line-height: 2em;}
+#contact #contact_top ul li .box .cont_right p {padding:10px; background: #fff; border-radius: 5px; box-shadow: 2px 3px 3px rgba(0,0,0,0.3);}
+#contact #contact_bottom p {margin:0 auto; text-align: center; margin-bottom:10px;}
+#contact #contact_bottom .form_top .label_id {color:#9377bd; font-weight: bold;}
+#contact #contact_bottom .form_top .text_id {width:200px; height:30px; border:1px solid #fff; margin:0 50px 10px 0; border-radius: 3px; padding: 5px;}
+#contact #contact_bottom .form_top .label_pass {color:#9377bd; font-weight: bold;}
+#contact #contact_bottom .form_top .text_pass {width:200px; height:30px; border:1px solid #fff; border-radius: 3px; padding: 5px;}
+#contact #contact_bottom .form_center .text_ask {border:1px solid #fff; border-radius: 3px; padding: 10px;}
+#contact #contact_bottom .form_bottom button {position: relative; background: #bc97f2; border: 2px solid #fff; padding: 5px 10px; color: #fff; margin: 0; border-radius: 6px; z-index: 2; overflow: hidden;}
+#contact #contact_bottom .form_bottom button:before {content: ''; display: block; position: absolute; left:-70px; top:0; width:100%; height: 31px; background:#7858e0; z-index: -1; transition: all .3s;}
+#contact #contact_bottom .form_bottom button:hover:before {left:0px;}
+#contact #contact_bottom .form_bottom input {background: none; border: 0; margin:0; padding:0; color:#fff; display: block; z-index: 3;}
+
+/* 하단 영역 */
+.top {display: none; position: fixed; right: 20px; bottom: 20px; background: rgba(255,255,255,0.5); border-radius: 10px; box-shadow: 2px 4px 10px rgba(0,0,0,0.4); z-index: 99;}
+.top a {display: block; padding:15px; font-weight: bold; color:#002f5a;}
+#footer .ft_nav {border-bottom:1px solid #5588a3;}
+#footer .ft_nav ul {text-align: center; border-bottom:3px solid #094d8c; margin-bottom: -2px;}
+#footer .ft_nav ul li {display: inline-flex; position: relative; width: 15%; height: 50px; line-height: 50px; text-align: center;}
+#footer .ft_nav ul li:before {content: ''; display: block; position: absolute; left:0; bottom:-3px; width:0; height:3px; background:#5588a3; transition: all .3s;}
+#footer .ft_nav ul li:hover:before {width:100%;}
+#footer .ft_nav ul li a {display: block; font-size: 1.1em; color:#094d8c; font-weight: bold; width: 100%; height: 100%; transition: all .3s;}
+#footer .ft_nav ul li a:hover {color:#5588a3;}
+#footer .ft_bottom {display: inline-flex; margin: 20px 0 0 100px;}
+#footer .ft_bottom .ft_left {width:510px;}
+#footer .ft_bottom .ft_left p {line-height: 1.4em; font-size:0.85em;}
+#footer .ft_bottom .ft_center {width: 110px; margin-right: 210px;}
+#footer .ft_bottom .ft_center .ft_menu div a {margin-top:15px; line-height: 1.8em; font-weight: bold; text-align: center; color:#094d8c; display: block; transition: all .3s;}
+#footer .ft_bottom .ft_center .ft_menu div:hover a {opacity: 0.4;}
+#footer .ft_bottom .ft_center .ft_menu div a:after {content: ''; display: block; width:100%; height:1px; background:#094d8c;}
+#footer .ft_bottom .ft_right {margin-top: 5px;}
+#footer .ft_bottom .ft_right li em {line-height: 1.8em; font-weight: bold; color:#094d8c;}
+#footer .ft_bottom .ft_right li p {line-height: 1.4em; font-size:0.85em;}
+#footer .ft_copyright {position: relative; text-align: center; font-size: 0.8em; margin:40px 0 30px 0; color:#094d8c;}
+#footer .ft_copyright .html05_mark {position: absolute; left: 50%; top: -20px; transform: translateX(-50%);}
+#footer .ft_copyright .html05_mark p {display: inline-block;}
+
+/* 반응형 영역 */
+@media all and (max-width: 1280px) {
+    * {transition: transform .3s;}
+    .ab .ab_clock, .ab .ab_cup {display: none;}
+    #about .ab_box {margin: 0 10px; width:calc(100% - 20px);}
+    #footer .ft_bottom {margin: 0;}
+}
+@media all and (max-width: 1024px) {
+    .ab .ab_pen {left:87%; top:2%; transform: rotate(-33deg);}
+    .ab .ab_flower {display: none;}
+    #portfolio ul {margin:0 10px;}
+    #worklist ul {text-align: center; border-left: 5px solid #fff;}
+    #worklist ul li {width:33.3333%; height: 350px;}
+    #worklist ul li:last-child {display: none;}
+    #contact #contact_top ul li {width:30%;}
+    #contact #contact_top ul li .box .cont_right {left:105px;}
+    #footer .wrap {text-align: center;}
+    #footer .ft_bottom .ft_left {display: none;}
+    #footer .ft_bottom .ft_right {width:auto;}
+}
+@media all and (max-width: 960px) {
+    .ab .ab_pen {display: none;}
+    .ab .ab_cup {display: block;}
+    #portfolio ul li.on {width:32.5%;}
+    #contact #contact_top ul {display: block;}
+}
+@media all and (max-width: 768px) {
+    #header {height: 340px;}
+    .logo {height: 300px;}
+    .logo h1 {top:0;}
+    .logo h1 a .logo_front, .logo h1 a .logo_front_mv {display: none;}
+    .logo h1 .logo_logo {left:0; top:130px; animation:none;}
+    .logo h1 .logo_background {left:-50px;}
+    .logo h1 .logo_front {display: none;}
+    .logo h1 .logo_front_mv {display: none;}
+    .ab .ab_pen {display: none;}
+    .ab .ab_flower {display: block; top: 450px; left: 0; transform: rotate(260deg);}
+    .ab .ab_cup {left: 85%; top: 13%; z-index: 2;}
+    .ab .ab_book {display: none;}
+    .ab .ab_clock {display: block; left: 60%; top: 600px; z-index: -2;}
+    .ab {height: auto;}
+    #portfolio ul {display: block;}
+    #portfolio ul li {display: inline-flex;}
+    #portfolio ul li {display: flex; width:100%; height:200px; margin: 0;}
+    #portfolio ul li:hover {width:100%;}
+    #portfolio ul li:first-child {height: 130px;}
+    #portfolio ul li:first-child:before {display: none;}
+    #portfolio ul li:first-child .port_left {font-size: 2em; color:#ffad17;}
+    #portfolio ul li .port_left {left: 50%; transform: translate(-50%, -50%); font-size: 1.25em;}
+    #portfolio ul li.on {width:100%;}
+    #portfolio ul li.on:before {top:60%;}
+    #portfolio ul li.on .port_left {top:30%;}
+    #portfolio ul li .port_main img {width: 100%; transform: translateX(0);}
+    #portfolio ul li:first-child .port_main img {width: auto; height: auto;}
+    #portfolio ul li.on .port_main img {width: 100%; transform: translateX(0);}
+    #portfolio ul li:first-child.on .port_main img {width: auto; height: auto;}
+    #worklist ul li {width: 50%; height:500px;}
+    #worklist ul li:before {background: rgba(0,0,0,0.7);}
+    #worklist ul li:last-child {display: inline-flex;}
+    #worklist ul li em, #worklist ul li em:before, #worklist ul li p {opacity: 1; z-index: 2;}
+    #contact #contact_top ul li .box .cont_left {left:0;}
+    #contact #contact_top ul li .box .cont_right {left:15px;}
+    #contact #contact_bottom .form_center .text_ask {margin: 10px; width: calc(100% - 25px);}
+}
+@media all and (max-width: 600px) {
+    #header {height: 120px;}
+    #header.on {height: 0;}
+    .logo {height: 100px;}
+    .logo h1 .logo_background {display: none;}
+    .logo h1 .logo_logo {left:-100px; top: 36px;}
+    .nav {display: none; position: fixed; left: 0; top: 68px; height: 100vh; background: rgba(0,0,0,0.8); z-index: 99;}
+    .nav ul {display: block; width:100%; position: absolute; left: 0; top: 50%; right: 0; bottom: 50%; transform: translateY(-200px);}
+    .nav ul li {display: inline-flex; width:100%; height: 60px; line-height: 60px; margin:0; font-weight: bold; font-size: 1.2em;}
+    .nav ul li:last-child {border:0;}
+    .nav ul li:before {display: none;}
+    .nav ul li:after {display: none;}
+    .nav ul li a {color: #fff;}
+    .nav ul li:hover a {background:rgba(255,255,255,0.4); color:#000;}
+    .nav ul li.active a {background:rgba(255,255,255,0.8); color:#000;}
+    .mnav {display: block; width: 100px; height: 48px; font-size:1em; font-family: 'Kalam', cursive; font-weight: bold; position: fixed; right:10px; top:20px; padding: 5px 10px; background:#fff; z-index: 98; text-align: center; transition: all .3s; color:#000; border-radius: 10px; box-shadow: 1px 2px 12px rgba(0,0,0,0.2);}
+    .mnav:before {content: ''; position: absolute; right: -30px; top:-50px; width: 150%; height: 150px; transform-origin: 50% 50%; background:#fff; border-radius: 50%; animation: pong 1s infinite; z-index: -1;}
+    .mnav.on:before {display: none;}
+    .mnav a {display: block; width:100%; height:100%; padding:5px; color:#000;}
+    .mnav.on {padding: 5px 10px; color:#fff; background:#000; border-radius: 10px 10px 0 0; transition: all .3s;}
+    .mnav.on a {color: #fff;}
+    @keyframes pong {
+        from {transform: scale(0, 0); opacity: 1;}
+        to {transform: scale(1, 1);opacity: 0;}
+    }
+    .ab .ab_cup, .ab .ab_book, .ab .ab_clock, .ab .ab_flower {display: none;}
+    .ab .ab_clock {top:800px;}
+    .port {padding:0 0 50px 0;}
+    #portfolio .port_list {height: 1000px;}
+    #portfolio .port_list div .port_explanation {width: 100%; height: 500px;}
+    #portfolio .port_list div .port_img {width: 100%; margin:0; border:0;}
+    #worklist ul li {height: 400px;}
+    #contact #contact_top ul li {display: block; margin: 0px auto;}
+    #contact #contact_top ul li .box .cont_right {left:-43px;}
+    #contact #contact_bottom .form_top .text_id, #contact #contact_bottom .form_top .text_pass {width:130px;}
+    #footer .ft_nav ul li {display: block; width:100%; border-bottom: 1px solid #ddd;}
+    #footer .ft_nav ul li:before {bottom: -1px; height: 2px;}
+    #footer .ft_bottom .ft_center {margin: 0 50px 0 20px;}
+    #contact #contact_bottom p {padding: 5px;}
+    #contact #contact_bottom .form_top .label_id, #contact #contact_bottom .form_top .label_pass {display: block; padding: 10px;} 
+    #contact #contact_bottom .form_top .text_id, #contact #contact_bottom .form_top .text_pass {width: calc(100% - 25px); margin:0;}
+}
+@media all and (max-width: 480px) {
+    .ab .ab_clock {display: none;}
+    #worklist ul li {width: 100%; border-radius: 20px; margin-bottom: 10px;}
+    #worklist ul li:last-child {margin:0;}
+    #contact #contact_bottom .form_bottom button {padding: 15px 30px; border-radius: 28px;}
+    #contact #contact_bottom .form_bottom button:before {left: -115px; height: 55px;}
+    #footer .ft_bottom .ft_center {margin-right: 50px;}
+}
+@media all and (max-width: 320px) {
+    .ab .ab_bottle {display: none;}
+    #worklist ul li {height: 250px;}
+    #contact #contact_top ul li .box .cont_left {left: -25px;}
+    #footer .ft_bottom .ft_center {margin: 0 50px;}
+}
